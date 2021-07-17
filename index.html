@@ -4,17 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Word Chain Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main">
-        <span class="dictWord">단어를 입력해주세요.</span>
+    <header>
+        <h1>🎲 끝말잇기 🎲</h1>
+    </header>
+    
+    <section class="main">
         <form class="inputWord">
-            <input type="text" name="" id="word" >
+            <div class="dictWord">Word</div>
+            <div class="meaning hidden">text</div>
+            <input type="text" id="word" placeholder="단어 입력">
+            <small class="message hidden">text</small>
         </form>
-        <button class="replay">다시 시작하기</button>
-    </div>
 
+        <button class="replay">다시 시작하기</button>
+    </section>
+
+    <footer>
+        <h3>📝 규칙 📝</h3>
+        <div>1. 입력한 단어가 사전에 미등재시 게임 종료</div>
+        <div>2. 사용자 우승 시 게임 종료</div>        
+    </footer>
 
     <script src="dictionaryAPI.js"></script>
 </body>
