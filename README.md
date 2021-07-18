@@ -25,7 +25,6 @@
 
 ### 7월 18일
 - 사용자 입력 글자 제한(2~6글자)
+- CORS 정책 해결
+- 랜덤 값 수정
 <br>
-
-## CORS 정책 해결 방법
-- [구글 확장 프로그램 설치](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=ko) 후 끝말잇기 사용 가능

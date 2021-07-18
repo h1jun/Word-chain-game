@@ -9,19 +9,20 @@ let nextLastLetter = '';
 
 // 다음 단어 get
 function getWord(lastLetter) {
-    fetch(`https://opendict.korean.go.kr/api/search?key=${API_KEY}&q=${lastLetter}&advanced=y&pos=1&num=15&method=start&type1=word&letter_s=2&letter_e=6&sort=popular`)
+    fetch(`https://word-chain-game.herokuapp.com/https://opendict.korean.go.kr/api/search?key=${API_KEY}&q=${lastLetter}&advanced=y&pos=1&num=15&method=start&type1=word&letter_s=2&letter_e=6&sort=popular`)
     .then(res => res.text())
     .then(data => {
         const parser = new DOMParser();
         const xml = parser.parseFromString(data, "text/xml");
-        const rndNum = Math.floor(Math.random() *  20);
-
+        
         // 단어 검색
         if (xml.getElementsByTagName("total")[0].textContent === '0') {
             alert("승리하셨습니다!");
             word.disabled = true;
         } else {
-            const nextWord = xml.getElementsByTagName("word")[rndNum].textContent.replace("-", "");
+            const countWord = xml. getElementsByTagName("word"); 
+            const rndNum = Math.floor(Math.random() *  countWord.length); // 랜덤 값
+            const nextWord = countWord[rndNum].textContent.replace("-", "");
             const definition = xml.getElementsByTagName("definition")[rndNum].textContent;
             dictWord.innerText = nextWord; // 단어 표시
             meaning.innerText = definition; // 의미 표시
@@ -36,7 +37,7 @@ function getWord(lastLetter) {
 // 입력한 단어 사전 등재 여부 검사
 function handleFetch(sendWord) {
     const search = sendWord;
-    fetch(`https://opendict.korean.go.kr/api/search?key=${API_KEY}&q=${search}&advanced=y&pos=1`)
+    fetch(`https://word-chain-game.herokuapp.com/https://opendict.korean.go.kr/api/search?key=${API_KEY}&q=${search}&advanced=y&pos=1`)
         .then(res => res.text())
         .then(data => {
             const parser = new DOMParser(); //텍스트 구문 분석
