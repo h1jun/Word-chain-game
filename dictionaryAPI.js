@@ -75,7 +75,11 @@ function handleInputWord(event) {
     if (nextLastLetter.length > 0 && nextLastLetter !== sendWord[0]) {
         message.innerText = "끝말잇기가 안 됩니다.";
         message.classList.remove("hidden");
-    } else {
+    } else if (!(sendWord.length >= 2 && sendWord.length <= 6)){
+        message.innerText = "2글자 ~ 6글자 내 단어를 입력하세요.";
+        message.classList.remove("hidden");
+    } 
+    else {
         word.value = "";
         handleFetch(sendWord); // 입력한 단어 사전 등재 여부 검사
     }
